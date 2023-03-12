@@ -17,7 +17,7 @@ export default defineConfig({
     build: {
         rollupOptions: {
             plugins: [
-                zxp(),
+                zxp(), // Options required, see below
             ],
         },
     }
@@ -30,7 +30,7 @@ import zxp from 'rollup-plugin-zxp';
 
 export default {
     plugins: [
-        zxp(),
+        zxp(), // Options required, see below
     ],
 };
 ```
@@ -68,10 +68,10 @@ zxp({
         org: process.env.CERT_ORG,
         name: process.env.CERT_NAME,
         email: process.env.CERT_EMAIL,
-        password: process.env.CERT_PASSWORD,
+        password: process.env.CERT_PASSWORD
     },
     sign: {
-        password: process.env.CERT_PASSWORD,
+        password: process.env.CERT_PASSWORD
     },
     gitIgnore: [`.env`, `*.p12`]
 })
@@ -91,7 +91,7 @@ zxp({
         name: process.env.CERT_NAME,
         email: process.env.CERT_EMAIL,
         password: process.env.CERT_PASSWORD,
-        output: 'path/to/cert.p12',
+        output: 'path/to/cert.p12'
     },
 })
 ```
@@ -102,7 +102,7 @@ To sign with an existing certificate:
 zxp({
     sign: {
         cert: 'path/to/cert.p12',
-        password: process.env.CERT_PASSWORD,
+        password: process.env.CERT_PASSWORD
     }
 })
 ```
@@ -116,10 +116,10 @@ zxp({
         org: process.env.CERT_ORG,
         name: process.env.CERT_NAME,
         email: process.env.CERT_EMAIL,
-        password: process.env.CERT_PASSWORD,, // Password must match
+        password: process.env.CERT_PASSWORD // Password must match
     },
     sign: {
-        password: process.env.CERT_PASSWORD, // Password must match
+        password: process.env.CERT_PASSWORD // Password must match
     }
 })
 ```
@@ -141,7 +141,7 @@ Now, the `.env` file and the `.p12` certificate file will be ignored by Git.
 
 `overrideZXP?` - If true, it will override the `.zxp` file if it already exists (default: true)
 
-## certOptions
+## selfSignedCert
 
 Type: `object`
 
@@ -155,7 +155,7 @@ Type: `object`
 - `city?` - The city of the certificate owner.
 - `output?` - The path to the `.p12` certificate file (default: `.secret/cert.p12`)
 
-## signOptions
+## sign
 
 Type: `object`
 
@@ -165,5 +165,4 @@ Type: `object`
 - `cert?` - The path to the `.p12` certificate file (default: certOptions.output)
 
 # License
-
 MIT
