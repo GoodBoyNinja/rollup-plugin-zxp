@@ -11,7 +11,10 @@
     "sign"
   ],
   "license": "MIT",
-  "repository": {},
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/GoodBoyNinja/rollup-plugin-zxp"
+  },
   "author": "Good Boy Ninja",
   "files": [
     "dist"
